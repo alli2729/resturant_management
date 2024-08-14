@@ -1,11 +1,13 @@
 import 'items/drink.dart';
 import 'items/food.dart';
 import 'resturant.dart';
+import 'table.dart';
 
 void main(List<String> args) {
   // making resturant
   Resturant resturant = Resturant();
 
+  // Phase One
   //1
   //add item to menu
   resturant.addFood(
@@ -47,4 +49,38 @@ void main(List<String> args) {
 
   // show all orders
   resturant.showOrders();
+
+  // Phase Two
+  // add table to resturant
+  resturant.addTable(table: Table(number: 1, capacity: 4));
+  resturant.addTable(table: Table(number: 2, capacity: 8));
+  resturant.addTable(table: Table(number: 3, capacity: 8));
+  // remover a table
+  resturant.removeTable(tableNumber: 2);
+  // close a table
+  resturant.closeTable(tableNumber: 1);
+  // free a table
+  resturant.freeTable(tableNumber: 1);
+  // add inplace order
+  resturant.addInPlace(
+      items: [Food(title: 'pizza', description: 'pepp', price: 200)],
+      tableNumber: 1);
+  // add item to inplace
+  resturant.addItemToIcPlace(
+      orderId: 2,
+      items: [Drink(title: 'pepsi', description: '300cc', price: 50)]);
+  // remove an item from order
+  resturant.deleteItemFromInPlace(orderId: 2, itemTitle: 'pepsi');
+  // changin status to finished
+  resturant.finish(orderId: 2);
+  // delete order
+  resturant.deleteOrder(orderId: 2);
+  // calculate total price
+  print(resturant.totalPrice(orderId: 2));
+
+  // show all tables
+  resturant.showTables();
+
+  resturant.showOrders();
+  resturant.showRevenu();
 }
