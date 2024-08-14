@@ -59,6 +59,8 @@ class Resturant {
         i.itemsInOrder.addAll(items);
         // close the table
         tables[tableIndex(tableNumber: tableNumber)].status = 'close';
+      } else {
+        print('this table is not free');
       }
     } else {
       print('there is no free table at this time');
@@ -184,6 +186,19 @@ class Resturant {
     }
     return sum;
   }
+
+  // reserve a table
+  void reserveTable({required int tableNumber}) {
+    if (tables[tableIndex(tableNumber: tableNumber)].status == 'free') {
+      tables[tableIndex(tableNumber: tableNumber)].status = 'reserved';
+    } else {
+      print('this table is close now !');
+    }
+  }
+
+  // cancle reservation
+  void cancleReservation({required int tableNumber}) =>
+      freeTable(tableNumber: tableNumber);
 
   // Getter
   List<Items> get menu => _menu;

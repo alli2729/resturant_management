@@ -1,3 +1,7 @@
+/*
+  Ali Karimi
+ */
+
 import 'items/drink.dart';
 import 'items/food.dart';
 import 'resturant.dart';
@@ -77,10 +81,16 @@ void main(List<String> args) {
   resturant.deleteOrder(orderId: 2);
   // calculate total price
   print(resturant.totalPrice(orderId: 2));
-
   // show all tables
   resturant.showTables();
-
-  resturant.showOrders();
+  //show revenu of resturant
   resturant.showRevenu();
+
+  // final phase
+  // reserve a table
+  resturant.reserveTable(tableNumber: 3);
+  // cancle reservation
+  resturant.cancleReservation(tableNumber: 3);
+  // show all tables status
+  resturant.showTables();
 }
